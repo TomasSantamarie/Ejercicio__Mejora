@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Enemigo">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.072">
+
+        <TextView
+            android:id="@+id/normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Normal:  100hp"
+            android:textColor="@color/vida"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/boss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Boss:       200hp"
+            android:textColor="@color/purple_500"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:id="@+id/vida_enemigo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/CorazonEnemigo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/vivo" />
+
+            <ProgressBar
+                android:id="@+id/VidaProgresEnemigo"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:max="200"
+                android:min="0"
+                android:paddingTop="10dp"
+                android:progress="200"
+                android:progressTint="@color/vida" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/enemigo"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_margin="30dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/enemigo" />
+
+        <LinearLayout
+            android:id="@+id/vida_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/CorazonUsuario"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/vivo" />
+
+            <ProgressBar
+                android:id="@+id/VidaProgresUsuario"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:max="200"
+                android:min="0"
+                android:paddingTop="10dp"
+                android:progress="200"
+                android:progressTint="@color/vida" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/botones_principales"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/luchar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Luchar" />
+
+            <Button
+                android:id="@+id/huir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="100dp"
+                android:text="Huir" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/botones_secundarios"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/atacar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Atacar"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/huirDado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:layout_weight="1"
+                android:text="HUIR"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/objeto_vida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="OBJETO"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
