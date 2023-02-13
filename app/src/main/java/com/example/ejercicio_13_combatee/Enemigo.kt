@@ -23,7 +23,7 @@ class Enemigo : AppCompatActivity() {
         binding.boss.isGone = true
 
 
-        
+
 
         var nivel_enemigo = (1..2).random()
         binding.luchar.setOnClickListener{
@@ -156,6 +156,11 @@ class Enemigo : AppCompatActivity() {
             binding.normal.isGone =true
         else
             binding.boss.isGone = true
+
+        for(i in 1..3){
+            personaje_1.getMochila().addArticulo(Articulo("Objeto",5,10,20))
+        }
+        personaje_1.setMonedero(personaje_1.getMonedero()+100)
 
         val text = "Has Ganado! Continua tu aventura"
         val duration = Toast.LENGTH_SHORT
