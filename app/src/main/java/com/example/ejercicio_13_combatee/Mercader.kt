@@ -38,8 +38,12 @@ class Mercader : AppCompatActivity() {
             cancelar()
         }
         binding.continuar.setOnClickListener{
-            val intent = Intent(this, MainActivity_2::class.java)
-            startActivity(intent)
+            if (personaje_1.getLugar() == "Ciudad")
+                funcionAleatoria()
+            else {
+                val intent = Intent(this, MainActivity_2::class.java)
+                startActivity(intent)
+            }
         }
         binding.comprar.setOnClickListener{
             comprar()
@@ -79,9 +83,9 @@ class Mercader : AppCompatActivity() {
             var aux = dinero * multiplicador
             binding.dinero.text = aux.toString()
 
-            if (binding.cantidad.text.toString().isNotEmpty())
-                binding.comprar.isEnabled = personaje_1.getMochila().getPesoMochila() >= multiplicador*5
-            else
+            if (binding.cantidad.text.toString().isNotEmpty()){
+                binding.comprar.isEnabled = personaje_1.getMochila().getPesoMochila() >= multiplicador*5 && personaje_1.getMonedero() >= multiplicador*125
+            }else
                 binding.comprar.isEnabled = true
         }catch (EE:Exception){
             println(EE)
@@ -105,7 +109,7 @@ class Mercader : AppCompatActivity() {
         binding.objeto.isGone = true
         binding.mochila.isGone = true
         binding.mensajeUsuario.isGone = true
-
+        binding.comprar.isEnabled = false
         binding.imagen.setImageResource(0)
 
     }
@@ -120,6 +124,7 @@ class Mercader : AppCompatActivity() {
 
         for(i in 1..binding.trueCantidad.text.toString().toInt()){
             personaje_1.getMochila().addArticulo(Articulo("Objeto",5,10,20))
+            personaje_1.setMonedero(personaje_1.getMonedero()-125)
         }
 
         binding.trueCantidad.text = binding.cantidad.text
@@ -145,7 +150,8 @@ class Mercader : AppCompatActivity() {
             binding.mochila.isGone = false
 
             for(i in 1..binding.cantidad.text.toString().toInt()){
-                personaje_1.getMochila().getContenido().removeAt(0)
+                personaje_1.setMonedero(personaje_1.getMonedero()+ personaje_1.getMochila().getContenido()[0].getValor())
+                personaje_1.getMochila().deleteArticulo()
             }
 
         }
@@ -157,8 +163,22 @@ class Mercader : AppCompatActivity() {
         binding.objetos.text = personaje_1.getMochila().getContenido().count().toString()
         binding.cantidad.text = binding.trueCantidad.text
 
+    }
+    private fun funcionAleatoria() {
+        var aux = (1..3).random()
 
-
+        if (aux == 1){
+            val intent = Intent(this, Objeto::class.java)
+            startActivity(intent)
+        }else {
+            if (aux == 2){
+                val intent = Intent(this, Mercader::class.java)
+                startActivity(intent)
+            }else {
+                val intent = Intent(this, Enemigo::class.java)
+                startActivity(intent)
+            }
+        }
 
     }
 

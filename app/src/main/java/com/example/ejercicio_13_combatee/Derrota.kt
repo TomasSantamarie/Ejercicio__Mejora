@@ -17,7 +17,7 @@ class Derrota : AppCompatActivity() {
         setContentView(view)
 
         binding.comenzar.setOnClickListener{
-            val intent = Intent(this, MainActivity_2::class.java)
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 

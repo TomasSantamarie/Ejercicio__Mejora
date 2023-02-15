@@ -50,12 +50,13 @@ class Enemigo : AppCompatActivity() {
         binding.objetoVida.setOnClickListener{
             usarObjeto()
         }
+        binding.prueba.text= personaje_1.getMatados().toString()
     }
 
     private fun usarObjeto() {
         try {
             if (personaje_1.getMochila().getContenido().isNotEmpty() && binding.VidaProgresUsuario.progress < 200){
-                personaje_1.getMochila().getContenido().removeAt(0)
+                personaje_1.getMochila().deleteArticulo()
                 if ((binding.VidaProgresUsuario.progress + 20) > 200)
                     binding.VidaProgresUsuario.progress = 200
                 else
@@ -110,8 +111,12 @@ class Enemigo : AppCompatActivity() {
         binding.boss.isGone = true
         binding.normal.isGone = true
         binding.huir.text = "HUIR"
-        val intent = Intent(this, MainActivity_2::class.java)
-        startActivity(intent)
+        if (personaje_1.getLugar().toString() == "Ciudad")
+            funcionAleatoria()
+        else {
+            val intent = Intent(this, MainActivity_2::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun ataqueUsuario(nivel_enemigo: Int) {
@@ -133,6 +138,7 @@ class Enemigo : AppCompatActivity() {
             }
             if (binding.VidaProgresEnemigo.progress == binding.VidaProgresEnemigo.min)
                 victoria(nivel_enemigo)
+
         }else{
             val text = "Fallaste!"
             val duration = Toast.LENGTH_SHORT
@@ -161,11 +167,19 @@ class Enemigo : AppCompatActivity() {
             personaje_1.getMochila().addArticulo(Articulo("Objeto",5,10,20))
         }
         personaje_1.setMonedero(personaje_1.getMonedero()+100)
-
-        val text = "Has Ganado! Continua tu aventura"
-        val duration = Toast.LENGTH_SHORT
-        val toast = Toast.makeText(applicationContext, text, duration)
-        toast.show()
+        personaje_1.setMatados(personaje_1.getMatados()+1)
+        if ((personaje_1.getMatados()%5 == 0)){
+            personaje_1.setLugar("Bosque")
+            val text = "Has podido salir de la ciudad"
+            val duration = Toast.LENGTH_SHORT
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
+        }else {
+            val text = "Has Ganado! Continua tu aventura"
+            val duration = Toast.LENGTH_SHORT
+            val toast = Toast.makeText(applicationContext, text, duration)
+            toast.show()
+        }
     }
 
     private fun ataqueEnemigo(nivel_enemigo: Int) {
@@ -218,5 +232,22 @@ class Enemigo : AppCompatActivity() {
             binding.normal.isGone =false
         else
             binding.boss.isGone = false
+    }
+    private fun funcionAleatoria() {
+        var aux = (1..3).random()
+
+        if (aux == 1){
+            val intent = Intent(this, Objeto::class.java)
+            startActivity(intent)
+        }else {
+            if (aux == 2){
+                val intent = Intent(this, Mercader::class.java)
+                startActivity(intent)
+            }else {
+                val intent = Intent(this, Enemigo::class.java)
+                startActivity(intent)
+            }
+        }
+
     }
 }

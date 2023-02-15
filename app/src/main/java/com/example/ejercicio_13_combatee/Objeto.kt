@@ -30,12 +30,7 @@ class Objeto : AppCompatActivity() {
 
             try {
 
-                var contador= mochila.getContenido().count()
-                var aux = 0
-                for (i in 1 .. contador){
-                    aux += mochila.getContenido()[i-1].getPeso()
-                }
-                if (mochila.getPesoMochila() >= aux) {
+                if (personaje_1.getMochila().getPesoMochila() > 0 ) {
                     personaje_1.getMochila().addArticulo(Articulo("Pico", 5, 10, 20))
                     binding.boton1.isGone = true
                     binding.mensajeBueno.isGone = false
@@ -59,9 +54,31 @@ class Objeto : AppCompatActivity() {
             binding.mensaje.isGone = true
             binding.mensajeBueno.isGone = true
             binding.boton1.isGone = false
-            val intent = Intent(this, MainActivity_2::class.java)
-            startActivity(intent)
+            if (personaje_1.getLugar() == "Ciudad")
+                funcionAleatoria()
+            else {
+                val intent = Intent(this, MainActivity_2::class.java)
+                startActivity(intent)
+            }
+
 
         }
+    }
+    private fun funcionAleatoria() {
+        var aux = (1..3).random()
+
+        if (aux == 1){
+            val intent = Intent(this, Objeto::class.java)
+            startActivity(intent)
+        }else {
+            if (aux == 2){
+                val intent = Intent(this, Mercader::class.java)
+                startActivity(intent)
+            }else {
+                val intent = Intent(this, Enemigo::class.java)
+                startActivity(intent)
+            }
+        }
+
     }
 }

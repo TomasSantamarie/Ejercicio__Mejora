@@ -14,14 +14,34 @@ class Ciudad : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.botonc1.setOnClickListener{
-            val intent = Intent(this, MainActivity_2::class.java)
-            startActivity(intent)
+        binding.entrar.setOnClickListener{
+            funcionAleatoria()
+            personaje_1.setLugar("Ciudad")
+            //binding.entrar.text= personaje_1.getLugar()
+
+
         }
 
-        binding.botonc2.setOnClickListener{
+        binding.seguir.setOnClickListener{
             val intent = Intent(this, MainActivity_2::class.java)
             startActivity(intent)
         }
+    }
+    private fun funcionAleatoria() {
+        var aux = (1..3).random()
+
+        if (aux == 1){
+            val intent = Intent(this, Objeto::class.java)
+            startActivity(intent)
+        }else {
+            if (aux == 2){
+                val intent = Intent(this, Mercader::class.java)
+                startActivity(intent)
+            }else {
+                val intent = Intent(this, Enemigo::class.java)
+                startActivity(intent)
+            }
+        }
+
     }
 }

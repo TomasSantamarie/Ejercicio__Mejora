@@ -27,6 +27,7 @@ class Mochila(private var pesoMochila: Int): Serializable {
     fun getPesoMochila():Int{
         return pesoMochila
     }
+
     fun addArticulo(articulo:Articulo){
         if (articulo.getPeso()<=pesoMochila){
             contenido.add(articulo)
@@ -47,6 +48,14 @@ class Mochila(private var pesoMochila: Int): Serializable {
             }
         }
         return -1
+    }
+    fun deleteArticulo(){
+        if (getContenido().isNotEmpty()) {
+            this.pesoMochila+=getContenido()[0].getPeso()
+            getContenido().removeAt(0)
+        }else{
+            println("La mochila está vacía, debes comprar artículos")
+        }
     }
 
     override fun toString(): String {

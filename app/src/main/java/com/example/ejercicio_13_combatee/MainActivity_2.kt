@@ -21,7 +21,6 @@ class MainActivity_2 : AppCompatActivity() {
 
     private fun funcionAleatoria() {
         var aux = (1..4).random()
-        aux = 4
         if (aux == 1){
             val intent = Intent(this, Objeto::class.java)
             startActivity(intent)
