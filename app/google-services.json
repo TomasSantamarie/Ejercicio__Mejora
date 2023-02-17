@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "124272782039",
+    "project_id": "pmdmejora",
+    "storage_bucket": "pmdmejora.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124272782039:android:de6c800f5400ebda321e92",
+        "android_client_info": {
+          "package_name": "com.example.ejercicio_13_combatee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124272782039-kt6gn39639urg5o0abc171p7gchu5vib.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA25HBmDDTh1SoVbC09q7ZHEraR1t-F0-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124272782039-kt6gn39639urg5o0abc171p7gchu5vib.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -15,16 +15,20 @@ class SegundaPag : AppCompatActivity() {
         binding = ActivitySegundaPagBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
+        binding.aceptar.isEnabled = false
         var aux = ""
         binding.humano.setOnClickListener { cambioFoto2(binding.humano.text.toString())
-            aux = "Humano"}
+            aux = "Humano"
+            binding.aceptar.isEnabled= true}
         binding.goblin.setOnClickListener { cambioFoto2(binding.goblin.text.toString())
-            aux = "Goblin"}
+            aux = "Goblin"
+            binding.aceptar.isEnabled= true}
         binding.elfo.setOnClickListener { cambioFoto2(binding.elfo.text.toString())
-            aux = "Elfo"}
+            aux = "Elfo"
+            binding.aceptar.isEnabled= true}
         binding.enano.setOnClickListener { cambioFoto2(binding.enano.text.toString())
-            aux = "Enano"}
+            aux = "Enano"
+            binding.aceptar.isEnabled= true}
 
         findViewById<Button>(R.id.aceptar).setOnClickListener{cambioPagina2(aux)}
     }
@@ -55,7 +59,7 @@ class SegundaPag : AppCompatActivity() {
             putExtra("Clase",clase)
             putExtra("Raza",raza)
         }
-
+        personaje_1.setRaza(raza)
         startActivity(intent)
     }
 }

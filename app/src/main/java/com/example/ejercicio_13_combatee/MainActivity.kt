@@ -15,19 +15,24 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        binding.aceptar.isEnabled= false
 
         var aux = ""
         binding.Mago.setOnClickListener { cambioFoto(binding.Mago.text.toString())
-            aux = "Mago"}
+            aux = "Mago"
+            binding.aceptar.isEnabled= true}
 
         binding.Ladron.setOnClickListener { cambioFoto(binding.Ladron.text.toString())
-            aux = "Ladron"}
+            aux = "Ladron"
+            binding.aceptar.isEnabled= true}
 
         binding.Berserker.setOnClickListener { cambioFoto(binding.Berserker.text.toString())
-            aux = "Berserker"}
+            aux = "Berserker"
+            binding.aceptar.isEnabled= true}
 
         binding.Guerrero.setOnClickListener { cambioFoto(binding.Guerrero.text.toString())
-            aux = "Guerrero"}
+            aux = "Guerrero"
+            binding.aceptar.isEnabled= true}
 
         findViewById<Button>(R.id.aceptar).setOnClickListener{cambioPagina(aux)}
     }
@@ -53,13 +58,13 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    private fun cambioPagina(aux: String) {
+    private fun cambioPagina(clase: String) {
 
         val intent = Intent(this, SegundaPag::class.java).apply {
-            putExtra("Clase",aux)
+            putExtra("Clase",clase)
         }
 
-
+        personaje_1.setClase(clase)
         startActivity(intent)
     }
 

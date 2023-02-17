@@ -20,7 +20,7 @@ class Activity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
         bindingMain= ActivityMainBinding.inflate(layoutInflater)
-
+        binding.Comenzar.isEnabled = false
         val bundle = intent.extras
         val clase = bundle?.getString("Clase")
         val raza = bundle?.getString("Raza")
@@ -38,29 +38,39 @@ class Activity : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 personaje_1.setNombre(binding.Nombre.text.toString())
+                binding.Comenzar.isEnabled = binding.Nombre.text.toString().isNotEmpty()
             } })
     }
 
     private fun atributosAleatorios() {
 
         var aux = randon(10,15)
-        binding.Fuerza.setText("Fuerza: "+aux)
+        binding.Fuerza.text = "Fuerza: "+aux
         personaje_1.setFuerza(aux)
 
         aux = randon(1,5)
         personaje_1.setDefensa(aux)
-        binding.Defensa.setText("Defensa: "+aux)
+        binding.Defensa.text = "Defensa: "+aux
 
         aux = randon(200,200)
         personaje_1.setVida(aux)
-        binding.Vida.setText("Vida: "+aux)
+        binding.Vida.text = "Vida: "+aux
+
+        for(i in 1..personaje_1.getMochila().getContenido().count()){
+            personaje_1.getMochila().deleteArticulo()
+        }
 
 
-        binding.TamaOMochila.setText("Tamaño Mochila: "+ mochila.getPesoMochila())
+        binding.TamaOMochila.text = "Tamaño Mochila: "+ mochila.getPesoMochila()
 
         aux = randon(0,0)
         personaje_1.setMonedero(aux)
-        binding.Monedero.setText("Monedero: "+aux)
+        binding.Monedero.text = "Monedero: "+aux
+
+
+
+        personaje_1.setMatados(0)
+        personaje_1.setLugar("Bosque")
 
     }
 

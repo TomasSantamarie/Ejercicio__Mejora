@@ -2,7 +2,7 @@ package com.example.ejercicio_13_combatee
 
 import java.io.Serializable
 
-class Personaje(private var nombre:String, private var vida:Int, private var fuerza:Int, private var defensa:Int, private var mochila: Mochila, private var monedero:Int, private var lugar:String, private var matados:Int) :Serializable{
+class Personaje(private var nombre:String, private var vida:Int, private var fuerza:Int, private var defensa:Int, private var mochila: Mochila, private var monedero:Int, private var lugar:String, private var matados:Int, private var clase:String, private var raza:String) :Serializable{
 
     fun getNombre():String{
         return nombre
@@ -50,9 +50,21 @@ class Personaje(private var nombre:String, private var vida:Int, private var fue
     fun setMatados(aux:Int){
         matados=aux
     }
+    fun getClase(): String {
+        return clase
+    }
+    fun setClase(aux:String){
+        clase=aux
+    }
+    fun getRaza(): String {
+        return raza
+    }
+    fun setRaza(aux:String){
+        raza=aux
+    }
     override fun toString(): String {
         return "[Personaje{ Nombre: ${nombre}, Vida:${vida}, Fuerza:${fuerza}, Defensa:${defensa}, Mochila:${mochila}, Monedero: ${monedero} }]"
     }
 }
 var mochila = Mochila( 200)
-var personaje_1 = Personaje("",0,0,0, mochila,0,"Bosque", 0)
+var personaje_1 = Personaje("",0,0,0, mochila,0,"Bosque", 0,"","")

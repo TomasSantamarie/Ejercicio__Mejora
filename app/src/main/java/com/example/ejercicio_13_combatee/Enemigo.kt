@@ -50,7 +50,12 @@ class Enemigo : AppCompatActivity() {
         binding.objetoVida.setOnClickListener{
             usarObjeto()
         }
-        binding.prueba.text= personaje_1.getMatados().toString()
+        binding.guardar.setOnClickListener{
+            val intent = Intent(this, Datos_personaje::class.java).apply {
+                putExtra("Pagina","Enemigo")
+            }
+            startActivity(intent)
+        }
     }
 
     private fun usarObjeto() {
@@ -111,6 +116,7 @@ class Enemigo : AppCompatActivity() {
         binding.boss.isGone = true
         binding.normal.isGone = true
         binding.huir.text = "HUIR"
+        binding.guardar.isGone=false
         if (personaje_1.getLugar().toString() == "Ciudad")
             funcionAleatoria()
         else {
@@ -226,6 +232,7 @@ class Enemigo : AppCompatActivity() {
         binding.vidaUsuario.isGone = false
         binding.botonesSecundarios.isGone = false
         binding.botonesPrincipales.isGone = true
+        binding.guardar.isGone=true
         binding.enemigo.setImageResource(R.drawable.goblin)
 
         if (nivel_enemigo==1)

@@ -72,6 +72,13 @@ class Mercader : AppCompatActivity() {
                 else
                     binding.vender.isEnabled = true
             } })
+
+        binding.guardar.setOnClickListener{
+            val intent = Intent(this, Datos_personaje::class.java).apply {
+                putExtra("Pagina","Mercader")
+            }
+            startActivity(intent)
+        }
     }
 
 
@@ -97,14 +104,17 @@ class Mercader : AppCompatActivity() {
     private fun comerciar() {
 
         binding.botonesPrincipales.isGone = true
+        binding.guardar.isGone=true
 
         binding.botonesSecundarios.isGone = false
+
 
 
     }
 
     private fun cancelar(){
         binding.botonesPrincipales.isGone = false
+        binding.guardar.isGone=false
         binding.botonesSecundarios.isGone = true
         binding.objeto.isGone = true
         binding.mochila.isGone = true

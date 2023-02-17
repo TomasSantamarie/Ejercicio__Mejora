@@ -26,6 +26,13 @@ class Ciudad : AppCompatActivity() {
             val intent = Intent(this, MainActivity_2::class.java)
             startActivity(intent)
         }
+
+        binding.guardar.setOnClickListener{
+            val intent = Intent(this, Datos_personaje::class.java).apply {
+                putExtra("Pagina","Ciudad")
+            }
+            startActivity(intent)
+        }
     }
     private fun funcionAleatoria() {
         var aux = (1..3).random()

@@ -15,6 +15,12 @@ class MainActivity_2 : AppCompatActivity() {
 
         binding.dado.setOnClickListener{ funcionAleatoria()}
 
+        binding.guardar.setOnClickListener{
+            val intent = Intent(this, Datos_personaje::class.java).apply {
+                putExtra("Pagina","Principal")
+            }
+            startActivity(intent)
+        }
 
 
     }

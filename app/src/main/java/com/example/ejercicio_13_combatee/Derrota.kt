@@ -3,8 +3,6 @@ package com.example.ejercicio_13_combatee
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.ejercicio_13_combatee.databinding.ActivityBinding
-import com.example.ejercicio_13_combatee.databinding.ActivityCiudadBinding
 import com.example.ejercicio_13_combatee.databinding.ActivityDerrotaBinding
 
 class Derrota : AppCompatActivity() {
@@ -17,7 +15,7 @@ class Derrota : AppCompatActivity() {
         setContentView(view)
 
         binding.comenzar.setOnClickListener{
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, ElegirPartida::class.java)
             startActivity(intent)
         }
 

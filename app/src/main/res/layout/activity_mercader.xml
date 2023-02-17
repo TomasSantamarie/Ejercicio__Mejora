@@ -27,7 +27,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="369dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="@+id/guideline5"
         tools:layout_editor_absoluteX="-2dp">
@@ -184,6 +184,13 @@
                 android:layout_weight="1"
                 android:text="COMPRAR" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/guardar"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:text="Guardar" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

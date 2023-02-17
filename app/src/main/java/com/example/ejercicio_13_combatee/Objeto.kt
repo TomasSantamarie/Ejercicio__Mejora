@@ -41,12 +41,6 @@ class Objeto : AppCompatActivity() {
             }catch (EE:Exception) {
                 println(EE)
             }
-            /*
-            val intent = Intent(this, Blanco::class.java)
-                intent.putExtra("Mochila",mochila)
-
-            startActivity(intent)
-             */
 
         }
 
