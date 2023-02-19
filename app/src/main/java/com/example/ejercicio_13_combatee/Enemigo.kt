@@ -1,9 +1,9 @@
 package com.example.ejercicio_13_combatee
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import com.example.ejercicio_13_combatee.databinding.ActivityEnemigoBinding
 
@@ -131,7 +131,7 @@ class Enemigo : AppCompatActivity() {
         if (dado>=4){
 
             if (nivel_enemigo == 1) {
-                if (binding.VidaProgresEnemigo.min >= (binding.VidaProgresEnemigo.progress - ((personaje_1.getFuerza()) * 2)))
+                if (binding.VidaProgresEnemigo.min >= (binding.VidaProgresEnemigo.progress - (personaje_1.getFuerza()) * 2))
                     binding.VidaProgresEnemigo.progress = binding.VidaProgresEnemigo.min
                 else
                     binding.VidaProgresEnemigo.progress -= (personaje_1.getFuerza()) * 2

@@ -1,9 +1,9 @@
 package com.example.ejercicio_13_combatee
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ejercicio_13_combatee.databinding.ActivityDatosPersonajeBinding
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -20,30 +20,50 @@ class Datos_personaje : AppCompatActivity() {
         val bundle = intent.extras
         val sitio = bundle?.getString("Pagina")
 
+        db.collection("usuario_ejemplo").document(usuario.getCorreo())
+            .get()
+            .addOnSuccessListener {
+                val user = it.toObject(Usuario::class.java)
+                if (user != null) {
+                    usuario.setPartidas(user!!.getPartidas())
+                    for (partida in usuario.getPartidas().getListaPartidas()) {
+                        partida.setNombrePersonaje(partida.getPersonaje().getNombre())
+                    }
+                }
+            }
 
-        binding.volver.setOnClickListener{
+        binding.volver.setOnClickListener {
             sitioVolver(sitio)
         }
-        binding.guardarEnBase.setOnClickListener{
+        binding.guardarEnBase.setOnClickListener {
 
             crear()
+            guardar()
 
+        }
+        binding.elegir.setOnClickListener {
+            val intent = Intent(this, ElegirPartida::class.java)
+            startActivity(intent)
         }
     }
 
     private fun crear() {
+        val index = usuario.getPartidas().encontrarPartida(personaje_1.getNombre())
+        if (index != -1) {
+            usuario.getPartidas().getListaPartidas()[index].setPersonaje(personaje_1)
+            return
+        }
 
-        var partida = Partida(personaje_1)
-        partidas.addPartida(partida)
-        usuario.setPartidas(partidas)
-
-
-        guardar()
+        var partida = Partida(personaje_1, personaje_1.getNombre())
+        usuario.getPartidas().addPartida(partida)
     }
 
     private fun guardar() {
+
         db.collection("usuario_ejemplo").document(usuario.getCorreo()).set(usuario)
 
+
+        //db.collection(usuario.getCorreo()).document(usuario.getPartidas().getListaPartidas()[number-1].getNombrePersonaje()).set(usuario.getPartidas().getListaPartidas()[number-1].getPersonaje())
         val text = "Partida guardada!"
         val duration = Toast.LENGTH_SHORT
         val toast = Toast.makeText(applicationContext, text, duration)

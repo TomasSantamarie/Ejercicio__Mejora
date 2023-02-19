@@ -1,9 +1,9 @@
 package com.example.ejercicio_13_combatee
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.ejercicio_13_combatee.databinding.ActivityLogeoBinding
 import com.google.firebase.auth.FirebaseAuth
 
@@ -58,8 +58,7 @@ class Logeo : AppCompatActivity() {
     }
 
     private fun cambioPagina2() {
-        val intent = Intent(this, Datos_personaje::class.java)
-
+        val intent = Intent(this, ElegirPartida::class.java)
         startActivity(intent)
     }
 }

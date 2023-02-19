@@ -1,10 +1,10 @@
 package com.example.ejercicio_13_combatee
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import com.example.ejercicio_13_combatee.databinding.ActivityMercaderBinding
 
@@ -31,24 +31,26 @@ class Mercader : AppCompatActivity() {
         binding.mensajeUsuario.isGone = true
 
         // Acciones de los dos botones
-        binding.comerciar.setOnClickListener{
+        binding.comerciar.setOnClickListener {
             comerciar()
         }
-        binding.cancelar.setOnClickListener{
+        binding.cancelar.setOnClickListener {
             cancelar()
         }
-        binding.continuar.setOnClickListener{
-            if (personaje_1.getLugar() == "Ciudad")
+        binding.continuar.setOnClickListener {
+            if (usuario.getPartidas().getListaPartidas()[number].getPersonaje()
+                    .getLugar() == "Ciudad"
+            )
                 funcionAleatoria()
             else {
                 val intent = Intent(this, MainActivity_2::class.java)
                 startActivity(intent)
             }
         }
-        binding.comprar.setOnClickListener{
+        binding.comprar.setOnClickListener {
             comprar()
         }
-        binding.vender.setOnClickListener{
+        binding.vender.setOnClickListener {
             vender()
         }
 
@@ -156,11 +158,14 @@ class Mercader : AppCompatActivity() {
             binding.mensajeUsuario.isGone = false
             binding.mochila.isGone = true
         }
-        else{
+        else {
             binding.mochila.isGone = false
 
-            for(i in 1..binding.cantidad.text.toString().toInt()){
-                personaje_1.setMonedero(personaje_1.getMonedero()+ personaje_1.getMochila().getContenido()[0].getValor())
+            for (i in 1..binding.cantidad.text.toString().toInt()) {
+                usuario.getPartidas().getListaPartidas()[number].getPersonaje().setMonedero(
+                    personaje_1.getMonedero() + personaje_1.getMochila()
+                        .getContenido()[0].getValor()
+                )
                 personaje_1.getMochila().deleteArticulo()
             }
 
