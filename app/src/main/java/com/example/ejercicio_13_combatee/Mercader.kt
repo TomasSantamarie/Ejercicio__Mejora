@@ -70,7 +70,8 @@ class Mercader : AppCompatActivity() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (binding.cantidad.text.toString().isNotEmpty())
-                    binding.vender.isEnabled = mochila.getContenido().count() >= binding.cantidad.text.toString().toInt()
+                    binding.vender.isEnabled = personaje_1.getMochila().getContenido()
+                        .count() >= binding.cantidad.text.toString().toInt()
                 else
                     binding.vender.isEnabled = true
             } })
