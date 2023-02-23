@@ -171,7 +171,7 @@ class Mercader : AppCompatActivity() {
 
         }
 
-        if (mochila.getContenido().isEmpty()) {
+        if (personaje_1.getMochila().getContenido().isEmpty()) {
             binding.mensajeUsuario.isGone = false
             binding.mochila.isGone = true
         }
