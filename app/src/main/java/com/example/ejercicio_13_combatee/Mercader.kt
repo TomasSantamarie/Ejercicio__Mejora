@@ -27,7 +27,7 @@ class Mercader : AppCompatActivity() {
         // Esto es para el boton vender
         //mochila son los objetos que vas a vender | Objetos sera la cantidad que quiera vender el usuario | Mensaje el mensaje que puede aparecer
         binding.mochila.isGone = true
-        binding.objetos.text = mochila.getContenido().count().toString()
+        binding.objetos.text = personaje_1.getMochila().getContenido().count().toString()
         binding.mensajeUsuario.isGone = true
 
         // Acciones de los dos botones
@@ -38,7 +38,7 @@ class Mercader : AppCompatActivity() {
             cancelar()
         }
         binding.continuar.setOnClickListener {
-            if (usuario.getPartidas().getListaPartidas()[number].getPersonaje()
+            if (personaje_1
                     .getLugar() == "Ciudad"
             )
                 funcionAleatoria()
@@ -163,7 +163,7 @@ class Mercader : AppCompatActivity() {
             binding.mochila.isGone = false
 
             for (i in 1..binding.cantidad.text.toString().toInt()) {
-                usuario.getPartidas().getListaPartidas()[number].getPersonaje().setMonedero(
+                personaje_1.setMonedero(
                     personaje_1.getMonedero() + personaje_1.getMochila()
                         .getContenido()[0].getValor()
                 )
@@ -173,6 +173,7 @@ class Mercader : AppCompatActivity() {
         }
 
         if (personaje_1.getMochila().getContenido().isEmpty()) {
+            binding.objetos.text = "0"
             binding.mensajeUsuario.isGone = false
             binding.mochila.isGone = true
         }
